@@ -1,0 +1,86 @@
+<mat-toolbar color="primary" class="flex justify-between">
+    <a routerLink="home">
+        <h1 class="text-3xl bg-black rounded-xl p-2 font-space-grotesk font-bold uppercase">UTXJ Parking</h1>
+    </a>
+    <nav class="gap-3 flex">
+        <button class="hidden sm:flex" mat-stroked-button [routerLink]="['/records']" routerLinkActive="bg-black/70">
+            <mat-icon>receipt</mat-icon>
+            Records
+        </button>
+
+        <button class="hidden sm:flex" mat-stroked-button [routerLink]="['/home']" routerLinkActive="bg-black/70">
+            <mat-icon>home</mat-icon>
+            Home
+        </button>
+
+        <button class="hidden sm:flex" mat-stroked-button [routerLink]="['/clients']" routerLinkActive="bg-black/70">
+            <mat-icon>group</mat-icon>
+            Clients
+        </button>
+        
+        <button class="hidden sm:flex" mat-stroked-button [routerLink]="['/employees']" routerLinkActive="bg-black/70">
+            <mat-icon>badge</mat-icon>
+            Employees
+        </button>
+        
+        <button class="hidden sm:flex" mat-stroked-button [routerLink]="['/vehicles']" routerLinkActive="bg-black/70">
+            <mat-icon>time_to_leave</mat-icon>
+            Vehicles
+        </button>
+        
+        <button class="hidden sm:flex" mat-stroked-button [routerLink]="['/clients']" routerLinkActive="bg-black/70">
+            <mat-icon>local_parking</mat-icon>
+            Slots
+        </button>
+
+        <button class="flex" mat-stroked-button [matMenuTriggerFor]="sensorsMenu"
+            aria-label="Example icon-button with a menu">
+            <mat-icon>expand_more</mat-icon>
+            Sensors
+        </button>
+        
+        <button class="hidden sm:flex" color="accent" mat-flat-button routerLinkActive="bg-black/70">
+            <mat-icon>logout</mat-icon>
+            Logout
+        </button>
+        <button class="flex sm:hidden" mat-icon-button [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['home']" routerLinkActive="bg-white/20"
+                class="flex items-center justify-around gap-1">
+                <mat-icon>home</mat-icon>
+                Inicio
+            </button>
+            <button mat-menu-item [routerLink]="['playing-now']" routerLinkActive="bg-white/20 "
+                class="flex items-center justify-around gap-1">
+                <mat-icon>play_arrow</mat-icon>
+                Cartelera
+            </button>
+            <button mat-menu-item [routerLink]="['most-popular']" routerLinkActive="bg-white/20"
+                class="flex items-center justify-around gap-1">
+                <mat-icon>star</mat-icon>
+                Más Popular
+            </button>
+        </mat-menu>
+        <mat-menu #sensorsMenu="matMenu">
+            <button mat-menu-item [routerLink]="['home']" routerLinkActive="bg-white/20"
+                class="flex items-center justify-around gap-1">
+                <mat-icon>sensors</mat-icon>
+                Proximity Sensor
+            </button>
+            <button mat-menu-item [routerLink]="['playing-now']" routerLinkActive="bg-white/20 "
+                class="flex items-center justify-around gap-1">
+                <mat-icon>thermostat</mat-icon>
+                Humidity and Temperature Sensor
+            </button>
+            <button mat-menu-item [routerLink]="['most-popular']" routerLinkActive="bg-white/20"
+                class="flex items-center justify-around gap-1">
+                <mat-icon>wb_twilight</mat-icon>
+                Photoresistor
+            </button>
+        </mat-menu>
+
+    </nav>
+</mat-toolbar>

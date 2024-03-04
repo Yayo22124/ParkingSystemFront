@@ -1,0 +1,72 @@
+<app-header></app-header>
+<main class="p-5">
+    <section class="w-1/2 flex flex-col gap-2 items-center justify-center mx-auto mb-10">
+        <h1 class="text-3xl font-bold">Create Employee</h1>
+        <form [formGroup]="employeeForm" (ngSubmit)="saveEmployee()" class="flex flex-col w-full">
+            <mat-form-field>
+              <input matInput placeholder="Nombre" formControlName="name" required />
+            </mat-form-field>
+          
+            <mat-form-field>
+              <input matInput placeholder="Dirección" formControlName="address" required />
+            </mat-form-field>
+          
+            <mat-form-field>
+              <input matInput placeholder="Número de teléfono" formControlName="phoneNumber" />
+            </mat-form-field>
+          
+            <mat-form-field>
+              <input matInput placeholder="Correo electrónico" formControlName="email" required />
+              @if (employeeForm.get('email')?.hasError('email')) {
+                  <mat-error>Correo electrónico no válido</mat-error>
+              }
+            </mat-form-field>
+          
+            <mat-form-field>
+              <input matInput placeholder="Nombre de usuario" formControlName="username" required />
+            </mat-form-field>
+          
+            <mat-form-field>
+              <input matInput type="password" placeholder="Contraseña" formControlName="password" required />
+            </mat-form-field>
+          
+            <button type="submit" mat-raised-button color="primary">Crear Empleado</button>
+          </form>
+          
+
+    </section>
+    <h1 class="text-2xl font-semibold mb-2">Employees:</h1>
+    <section class="flex flex-wrap gap-5 justify-around">
+        @for (employee of employees; track $index) {
+        <mat-card class="w-1/4 p-2 flex flex-col gap-5">
+            <mat-card-header>
+                <mat-card-title class="text-xl">{{employee.name}} ({{employee.username}})</mat-card-title>
+                <mat-card-subtitle>Id: {{employee.id}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <ul class="list-disc flex flex-col gap-2 [&>li]:flex [&>li]:items-center [&>li]:gap-2">
+                    <li><mat-icon>pin_drop</mat-icon>Address: {{employee.address}}
+                    </li>
+                    <li><mat-icon>call</mat-icon>Phone Number:
+                        <a [href]="'tel:'+employee.phoneNumber"
+                            class="underline text-blue-500 cursor-pointer">{{employee.phoneNumber}}</a>
+                    </li>
+                    <li><mat-icon>mail</mat-icon>Email: <a
+                            [href]="'mailto:'+employee.email"
+                            class="underline text-blue-500 cursor-pointer">{{employee.email}}</a></li>
+                </ul>
+            </mat-card-content>
+            <mat-card-actions class="flex gap-3">
+                <button mat-stroked-button color="primary" (click)="editEmployee(employee.id)">
+                    <mat-icon>edit</mat-icon>
+                    Edit
+                </button>
+                <button mat-stroked-button color="warn" (click)="deleteEmployee(employee.id)">
+                    <mat-icon>delete</mat-icon>
+                    Delete
+                </button>
+            </mat-card-actions>
+        </mat-card>
+        }
+    </section>
+</main>
