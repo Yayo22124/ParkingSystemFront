@@ -1,1 +1,62 @@
-<p>clients works!</p>
+<app-header></app-header>
+<main class="p-5">
+    <section class="w-1/2 flex flex-col gap-2 items-center justify-center mx-auto mb-10">
+        <h1 class="text-3xl font-bold">Create Client</h1>
+        <form [formGroup]="clientForm" (ngSubmit)="saveClient()" class="flex flex-col w-full">
+            <mat-form-field>
+                <mat-label>Full Name</mat-label>
+                <input matInput placeholder="John Doe" formControlName="name" required />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Venustiano Carranza" formControlName="address" required />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Phone Number</mat-label>
+                <input matInput placeholder="7641151920" type="tel" formControlName="phoneNumber" />
+                @if (clientForm.get('email')?.hasError('email')) {
+                <mat-error>Invalid phone number.</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="john@example.com" type="email" formControlName="email" required />
+                @if (clientForm.get('email')?.hasError('email')) {
+                <mat-error>Invalid email.</mat-error>
+                }
+            </mat-form-field>
+
+            <button type="submit" mat-raised-button color="primary">Create</button>
+        </form>
+
+
+    </section>
+    <h1 class="text-2xl font-semibold mb-2">Clients:</h1>
+    <section class="flex flex-wrap gap-5 justify-around">
+        @for (client of clients; track $index) {
+            <app-page-item 
+            [title-card]="client.name" 
+            [id-card]="client.id" 
+            [content-card]="[
+              {
+                name: 'Phone Number',
+                value: client.phoneNumber
+              },
+              {
+                name: 'Email',
+                value: client.email
+              },
+              {
+                name: 'Address',
+                value: client.address
+              }
+            ]" 
+            (editClicked)="editClient($event)"
+            (deleteClicked)="deleteClient($event)"
+            class="w-1/4" />
+        }
+    </section>
+</main>

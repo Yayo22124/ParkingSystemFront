@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
+import { CopyClipboardComponent } from '../../components/copy-clipboard/copy-clipboard.component';
 import { EmployeesService } from '../../core/services';
 import { HeaderComponent } from '../../components/header/header.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +11,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { PageItemComponent } from '../../components/page-item/page-item.component';
 import { iEmployee } from '../../core/interfaces/i-employee';
 
 @Component({
@@ -24,7 +26,9 @@ import { iEmployee } from '../../core/interfaces/i-employee';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    CopyClipboardComponent,
+    PageItemComponent
   ],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.scss',
@@ -61,12 +65,12 @@ export class EmployeesComponent implements OnInit {
           this.getAllEmployees();
           this.employeeForm.reset("")
 
-          this._snackbar.open("Employee successfully created.", "cerrar", {
+          this._snackbar.open("Employee successfully created.", "Close", {
             duration: 5 * 1000
           })
         },
         (error) => {
-          this._snackbar.open("Error creating employee.", "cerrar", {
+          this._snackbar.open("Error creating employee.", "Close", {
             duration: 5 * 1000
           })
           console.error('Error al crear el empleado', error);
@@ -86,13 +90,13 @@ export class EmployeesComponent implements OnInit {
 
   deleteEmployee(id: string){
     this.employeesService.deleteEmployee(id).subscribe((data) => {
-      this._snackbar.open("Employee successfully deleted.", "cerrar", {
+      this._snackbar.open("Employee successfully deleted.", "Close", {
         duration: 5 * 1000
       })
       this.getAllEmployees();
     }, (error) => {
       console.error(error);
-      this._snackbar.open("Error deleting employee.", "cerrar", {
+      this._snackbar.open("Error deleting employee.", "Close", {
         duration: 5 * 1000
       })
     })

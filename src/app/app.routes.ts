@@ -37,5 +37,11 @@ export const routes: Routes = [
     loadComponent() {
         return import("./pages/employees/employees.component").then(component => component.EmployeesComponent)
     }
+  },
+  {
+    path: "clients",
+    loadComponent() {
+        return import("./pages/clients/clients.component").then(component => component.ClientsComponent)
+    }
   }
 ];

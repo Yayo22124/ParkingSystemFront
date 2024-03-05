@@ -1,0 +1,45 @@
+<mat-card class="p-2 flex flex-col gap-5">
+    <mat-card-header>
+        <mat-card-title class="text-xl">{{titleCard}}</mat-card-title>
+        <mat-card-subtitle>
+            Id: {{idCard}}
+            <app-copy-clipboard [text-to-copy]="idCard" />
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <ul class="list-disc flex flex-col gap-2 [&>li]:flex [&>li]:items-center [&>li]:gap-2">
+            @for (content of contentCard; track $index) {
+            @if (content.name === 'email' || content.name === 'Email') {
+            <li><mat-icon>mail</mat-icon>{{content.name}}: <a [href]="'mailto:'+content.value"
+                    class="underline text-blue-500 cursor-pointer">{{content.value}}</a></li>
+            } @else if (content.name === 'Phone Number') {
+            <li><mat-icon>call</mat-icon>Phone Number:
+                <a [href]="'tel:'+content.value" class="underline text-blue-500 cursor-pointer">{{content.value}}</a>
+            </li>
+            } @else if (content.name === 'Address'){
+            <li><mat-icon>pin_drop</mat-icon>{{content.name}}: <span class="text-neutral-500">{{content.value}}</span>
+            </li>
+        } @else {
+                <li><mat-icon>info</mat-icon>{{content.name}}: <span class="text-neutral-500">{{content.value}}</span>
+                </li>
+
+            }
+
+            }
+        </ul>
+    </mat-card-content>
+    <mat-card-actions class="flex gap-3">
+        <button
+            class="inline-flex items-center px-4 py-2 bg-blue-600 transition ease-in-out delay-75 hover:bg-blue-700 text-white text-sm font-medium rounded-md hover:-translate-y-1 hover:scale-110"
+            (click)="editItem()">
+            <mat-icon>edit</mat-icon>
+            Edit
+        </button>
+        <button
+            class="inline-flex items-center px-4 py-2 bg-red-600 transition ease-in-out delay-75 hover:bg-red-700 text-white text-sm font-medium rounded-md hover:-translate-y-1 hover:scale-110"
+            (click)="deleteItem()">
+            <mat-icon>delete</mat-icon>
+            Delete
+        </button>
+    </mat-card-actions>
+</mat-card>
