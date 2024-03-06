@@ -15,8 +15,8 @@ export class PhotoresistorsService {
     return this.http.get<iPhotoresistor[]>(`${apiUrl}/photoresistors/`);
   }
 
-  getLastPhotoresistor(): Observable<iPhotoresistor[]> {
-    return this.http.get<iPhotoresistor[]>(`${apiUrl}/photoresistors/last/`);
+  getLastPhotoresistor(): Observable<iPhotoresistor> {
+    return this.http.get<iPhotoresistor>(`${apiUrl}/photoresistors/last/`);
   }
 
   getOnePhotoresistor(slotId: string): Observable<iApiResponse> {

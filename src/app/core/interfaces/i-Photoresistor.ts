@@ -1,6 +1,6 @@
 export interface iPhotoresistor {
     id: string;
-    status: boolean;
+    status: string;
     createdAt: string;
   }
   

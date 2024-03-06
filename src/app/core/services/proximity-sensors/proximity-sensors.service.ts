@@ -15,8 +15,8 @@ export class ProximitySensorsService {
     return this.http.get<iProximitySensor[]>(`${apiUrl}/proximity-sensors/`);
   }
 
-  getLastProximitySensor(): Observable<iProximitySensor[]> {
-    return this.http.get<iProximitySensor[]>(`${apiUrl}/proximity-sensors/last/`);
+  getLastProximitySensor(): Observable<iProximitySensor> {
+    return this.http.get<iProximitySensor>(`${apiUrl}/proximity-sensors/last/`);
   }
 
   getOneProximitySensor(proximityId: string): Observable<iApiResponse> {
