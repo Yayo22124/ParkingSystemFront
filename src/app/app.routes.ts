@@ -28,20 +28,124 @@ export const routes: Routes = [
   },
   {
     path: "home",
-    loadComponent() {
-        return import("./pages/home/home.component").then(component => component.HomeComponent)
+    async loadComponent() {
+        const component = await import("./pages/home/home.component");
+      return component.HomeComponent;
     },
   },
   {
     path: "employees",
-    loadComponent() {
-        return import("./pages/employees/employees.component").then(component => component.EmployeesComponent)
+    async loadComponent() {
+        const component = await import("./pages/employees/employees.component");
+      return component.EmployeesComponent;
     }
   },
   {
     path: "clients",
-    loadComponent() {
-        return import("./pages/clients/clients.component").then(component => component.ClientsComponent)
+    async loadComponent() {
+        const component = await import("./pages/clients/clients.component");
+      return component.ClientsComponent;
     }
+  },
+  {
+    path: "vehicles",
+    async loadComponent() {
+        const component = await import("./pages/vehicles/vehicles.component");
+      return component.VehiclesComponent;
+    }
+  },
+  {
+    path: "fees",
+    async loadComponent() {
+        const component = await import("./pages/fees/fees.component");
+      return component.FeesComponent;
+    }
+  },
+  {
+    path: "slots",
+    async loadComponent() {
+        const component = await import("./pages/slots/slots.component");
+      return component.SlotsComponent;
+    }
+  },
+  {
+    path: "records",
+    async loadComponent() {
+        const component = await import("./pages/records/records.component");
+      return component.RecordsComponent;
+    }
+  },
+  {
+    path: "sensors",
+    children: [
+      {
+        path:"humidity-sensors",
+        async loadComponent() {
+          const component = await import("./pages/humidity-sensors/humidity-sensors.component")
+          return component.HumiditySensorsComponent;
+        },
+      },
+      {
+        path:"proximity-sensors",
+        async loadComponent() {
+          const component = await import("./pages/proximity-sensors/proximity-sensors.component")
+          return component.ProximitySensorsComponent;
+        },
+      },
+      {
+        path:"photoresistors",
+        async loadComponent() {
+          const component = await import("./pages/photoresistors/photoresistors.component")
+          return component.PhotoresistorsComponent;
+        },
+      },
+    ]
+  },
+  {
+    path: "update",
+    children: [
+      {
+        path: "client/:uuid",
+        async loadComponent() {
+          const component = await import("./update/update-client/update-client.component");
+          return component.UpdateClientComponent;
+        },
+      },
+      {
+        path: "employee/:uuid",
+        async loadComponent() {
+          const component = await import("./update/update-employee/update-employee.component");
+          return component.UpdateEmployeeComponent;
+        },
+      },
+      {
+        path: "vehicle/:uuid",
+        async loadComponent() {
+          const component = await import("./update/update-vehicle/update-vehicle.component");
+          return component.UpdateVehicleComponent;
+        },
+      },
+      {
+        path: "fee/:uuid",
+        async loadComponent() {
+          const component = await import("./update/update-fee/update-fee.component");
+          return component.UpdateFeeComponent;
+        },
+      },
+      {
+        path: "slot/:uuid",
+        async loadComponent() {
+          const component = await import("./update/update-slot/update-slot.component");
+          return component.UpdateSlotComponent;
+        },
+      },
+      {
+        path: "record/:uuid",
+        async loadComponent() {
+          const component = await import("./update/update-record/update-record.component");
+          return component.UpdateRecordComponent;
+        },
+      }
+    ]
   }
 ];

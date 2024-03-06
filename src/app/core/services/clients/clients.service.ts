@@ -17,12 +17,16 @@ export class ClientsService {
     return this.http.get<iClient[]>(`${apiUrl}/clients/`);
   }
 
-  getOneClient(clientId: string): Observable<iClient> {
-    return this.http.get<iClient>(`${apiUrl}/clients/${clientId}`);
+  getOneClient(clientId: string): Observable<any> {
+    return this.http.get<any>(`${apiUrl}/clients/${clientId}`);
   }
 
   createClient(newClient: iClient): Observable<any> {
     return this.http.post<any>(`${apiUrl}/clients/`, newClient);
+  }
+
+  updateClient(updateData: iClient, clientId: string): Observable<any> {
+    return this.http.put<any>(`${apiUrl}/clients/${clientId}`, updateData)
   }
 
   deleteClient(clientId: string): Observable<any> {

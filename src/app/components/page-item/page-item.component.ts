@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 import { CopyClipboardComponent } from '../copy-clipboard/copy-clipboard.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,29 +13,35 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    CopyClipboardComponent
+    CopyClipboardComponent,
+    RouterLink,
   ],
   templateUrl: './page-item.component.html',
-  styleUrl: './page-item.component.scss'
+  styleUrl: './page-item.component.scss',
 })
 export class PageItemComponent {
+  constructor(private router: Router) {}
   @Input({
     alias: 'id-card',
-    required: true
-  }) idCard: string = ''; 
-  @Input('title-card') titleCard: string = "Default"; 
-  @Input('content-card') contentCard: any[] = [{
-    name: "Default",
-    value: "Default"
-  }]; 
+    required: true,
+  })
+  idCard: string = '';
+  @Input('type-card') typeCard: string = 'Default';
+  @Input('title-card') titleCard: string = 'Default';
+  @Input('content-card') contentCard: any[] = [
+    {
+      name: 'Default',
+      value: 'Default',
+    },
+  ];
 
   @Output() editClicked: EventEmitter<string> = new EventEmitter<string>();
   @Output() deleteClicked: EventEmitter<string> = new EventEmitter<string>();
 
   editItem() {
-    this.editClicked.emit(this.idCard);
+    this.router.navigateByUrl(`/update/${this.typeCard}/${this.idCard}`);
   }
-  
+
   deleteItem() {
     this.deleteClicked.emit(this.idCard);
   }

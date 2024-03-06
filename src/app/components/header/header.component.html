@@ -3,10 +3,6 @@
         <h1 class="text-3xl bg-black rounded-xl p-2 font-space-grotesk font-bold uppercase">UTXJ Parking</h1>
     </a>
     <nav class="gap-3 flex">
-        <button class="hidden sm:flex" mat-stroked-button [routerLink]="['/records']" routerLinkActive="bg-black/70">
-            <mat-icon>receipt</mat-icon>
-            Records
-        </button>
 
         <button class="hidden sm:flex" mat-stroked-button [routerLink]="['/home']" routerLinkActive="bg-black/70">
             <mat-icon>home</mat-icon>
@@ -27,10 +23,11 @@
             <mat-icon>time_to_leave</mat-icon>
             Vehicles
         </button>
-        
-        <button class="hidden sm:flex" mat-stroked-button [routerLink]="['/slots']" routerLinkActive="bg-black/70">
-            <mat-icon>local_parking</mat-icon>
-            Slots
+
+        <button class="flex" mat-stroked-button [matMenuTriggerFor]="parkingMenu"
+            aria-label="Example icon-button with a menu">
+            <mat-icon>expand_more</mat-icon>
+            Parking
         </button>
 
         <button class="flex" mat-stroked-button [matMenuTriggerFor]="sensorsMenu"
@@ -65,20 +62,37 @@
             </button>
         </mat-menu>
         <mat-menu #sensorsMenu="matMenu">
-            <button mat-menu-item [routerLink]="['home']" routerLinkActive="bg-white/20"
+            <button mat-menu-item [routerLink]="['/sensors/proximity-sensors']" routerLinkActive="bg-white/20"
                 class="flex items-center justify-around gap-1">
                 <mat-icon>sensors</mat-icon>
                 Proximity Sensor
             </button>
-            <button mat-menu-item [routerLink]="['playing-now']" routerLinkActive="bg-white/20 "
+            <button mat-menu-item [routerLink]="['/sensors/humidity-sensors']" routerLinkActive="bg-white/20 "
                 class="flex items-center justify-around gap-1">
                 <mat-icon>thermostat</mat-icon>
                 Humidity and Temperature Sensor
             </button>
-            <button mat-menu-item [routerLink]="['most-popular']" routerLinkActive="bg-white/20"
+            <button mat-menu-item [routerLink]="['/sensors/photoresistors']" routerLinkActive="bg-white/20"
                 class="flex items-center justify-around gap-1">
                 <mat-icon>wb_twilight</mat-icon>
                 Photoresistor
+            </button>
+        </mat-menu>
+        <mat-menu #parkingMenu="matMenu">
+            <button mat-menu-item [routerLink]="['/records']" routerLinkActive="bg-white/20"
+                class="flex items-center justify-around gap-1">
+                <mat-icon>receipt</mat-icon>
+                Records
+            </button>
+            <button mat-menu-item [routerLink]="['/fees']" routerLinkActive="bg-white/20 "
+                class="flex items-center justify-around gap-1">
+                <mat-icon>price_change</mat-icon>
+                Fees
+            </button>
+            <button mat-menu-item [routerLink]="['/slots']" routerLinkActive="bg-white/20"
+                class="flex items-center justify-around gap-1">
+                <mat-icon>local_parking</mat-icon>
+                Slots
             </button>
         </mat-menu>
 

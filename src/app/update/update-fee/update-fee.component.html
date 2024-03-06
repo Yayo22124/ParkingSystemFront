@@ -1,0 +1,31 @@
+<app-header></app-header>
+<main class="p-5 animate-fade-down">
+    <section class="w-1/2 flex flex-col gap-2 items-center justify-center mx-auto mb-10">
+        <h1 class="text-3xl font-bold">Create Fee</h1>
+        <form [formGroup]="updateFeeForm" (ngSubmit)="updateFee()" class="flex flex-col w-full">
+            <mat-form-field>
+                <mat-label>Fee Name</mat-label>
+                <input matInput placeholder="John Doe" formControlName="name" required />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Cost</mat-label>
+                <input matInput placeholder="$15.00" formControlName="cost" required />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status">
+                    <mat-option [value]="true">Active</mat-option>
+                    <mat-option [value]="false">Inactive</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="w-full flex items-center justify-center gap-3">
+                <button type="submit" mat-raised-button color="primary">Update</button>
+                <button type="submit" mat-raised-button color="primary">Cancel</button>
+            </div>
+        </form>
+
+
+    </section>
+</main>

@@ -1,0 +1,46 @@
+<app-header></app-header>
+<main class="p-5 animate-fade-down">
+    <section class="w-1/2 flex flex-col gap-2 items-center justify-center mx-auto mb-10">
+        <h1 class="text-3xl font-bold">Update Employee</h1>
+        <form [formGroup]="updateEmployeeForm" (ngSubmit)="updateEmployee()" class="flex flex-col w-full">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Name" formControlName="name" required />
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Address" formControlName="address" required />
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Phone Number</mat-label>
+                <input matInput placeholder="Phone Number" formControlName="phoneNumber" />
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email" required />
+                @if (updateEmployeeForm.get('email')?.hasError('email')) {
+                    <mat-error>Correo electrónico no válido</mat-error>
+                }
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="Username" formControlName="username" required />
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="Password" formControlName="password" required />
+            </mat-form-field>
+            <div class="w-full flex items-center justify-center gap-3">
+                <button type="submit" mat-raised-button color="primary">Update</button>
+                <button type="submit" mat-raised-button color="warn">Cancel</button>
+            </div>
+        </form>
+
+
+    </section>
+</main>

@@ -1,9 +1,9 @@
 <app-header></app-header>
-<main class="p-5 animate-fade-up">
+<main class="p-5 animate-fade-down">
     <section class="w-1/2 flex flex-col gap-2 items-center justify-center mx-auto mb-10">
         <h1 class="text-3xl font-bold">Create Slot</h1>
-        <form [formGroup]="slotForm" (ngSubmit)="saveSlot()" class="flex flex-col w-full">
-            
+        <form [formGroup]="updateSlotForm" (ngSubmit)="updateSlot()" class="flex flex-col w-full">
+
             <mat-form-field>
                 <mat-label>Number</mat-label>
                 <input matInput placeholder="1" type="number" formControlName="number" required />
@@ -22,30 +22,12 @@
                 </mat-select>
             </mat-form-field>
 
-            <button type="submit" mat-raised-button color="primary">Create</button>
+            <div class="w-full flex items-center justify-center gap-3">
+                <button type="submit" mat-raised-button color="primary">Update</button>
+                <button type="submit" mat-raised-button color="warn">Cancel</button>
+            </div>
         </form>
 
 
-    </section>
-    <h1 class="text-2xl font-semibold mb-2">Slots:</h1>
-    <section class="flex flex-wrap gap-5 justify-around">
-        @for (slot of slots; track $index) {
-            <app-page-item 
-            type-card="slot"
-            [title-card]="slot.number.toString()" 
-            [id-card]="slot.id" 
-            [content-card]="[
-              {
-                name: 'Description',
-                value: slot.description
-              },
-              {
-                name: 'Status',
-                value: slot.status
-              }
-            ]" 
-            (deleteClicked)="deleteSlot($event)"
-            class="w-1/4" />
-        }
     </section>
 </main>

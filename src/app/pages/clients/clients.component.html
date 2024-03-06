@@ -1,5 +1,5 @@
 <app-header></app-header>
-<main class="p-5">
+<main class="p-5 animate-fade-up">
     <section class="w-1/2 flex flex-col gap-2 items-center justify-center mx-auto mb-10">
         <h1 class="text-3xl font-bold">Create Client</h1>
         <form [formGroup]="clientForm" (ngSubmit)="saveClient()" class="flex flex-col w-full">
@@ -38,6 +38,7 @@
     <section class="flex flex-wrap gap-5 justify-around">
         @for (client of clients; track $index) {
             <app-page-item 
+            type-card="client"
             [title-card]="client.name" 
             [id-card]="client.id" 
             [content-card]="[
@@ -54,7 +55,6 @@
                 value: client.address
               }
             ]" 
-            (editClicked)="editClient($event)"
             (deleteClicked)="deleteClient($event)"
             class="w-1/4" />
         }

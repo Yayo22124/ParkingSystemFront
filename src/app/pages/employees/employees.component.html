@@ -1,5 +1,5 @@
 <app-header></app-header>
-<main class="p-5">
+<main class="p-5 animate-fade-up">
   <section class="w-1/2 flex flex-col gap-2 items-center justify-center mx-auto mb-10">
     <h1 class="text-3xl font-bold">Create Employee</h1>
     <form [formGroup]="employeeForm" (ngSubmit)="saveEmployee()" class="flex flex-col w-full">
@@ -40,6 +40,7 @@
   <section class="flex flex-wrap gap-5 justify-around">
     @for (employee of employees; track $index) {
     <app-page-item 
+      type-card="employee"
       [title-card]="employee.name" 
       [id-card]="employee.id" 
       [content-card]="[

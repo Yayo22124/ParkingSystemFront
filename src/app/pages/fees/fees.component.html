@@ -1,17 +1,16 @@
 <app-header></app-header>
 <main class="p-5 animate-fade-up">
     <section class="w-1/2 flex flex-col gap-2 items-center justify-center mx-auto mb-10">
-        <h1 class="text-3xl font-bold">Create Slot</h1>
-        <form [formGroup]="slotForm" (ngSubmit)="saveSlot()" class="flex flex-col w-full">
-            
+        <h1 class="text-3xl font-bold">Create Fee</h1>
+        <form [formGroup]="feeForm" (ngSubmit)="saveFee()" class="flex flex-col w-full">
             <mat-form-field>
-                <mat-label>Number</mat-label>
-                <input matInput placeholder="1" type="number" formControlName="number" required />
+                <mat-label>Fee Name</mat-label>
+                <input matInput placeholder="John Doe" formControlName="name" required />
             </mat-form-field>
 
             <mat-form-field>
-                <mat-label>Description</mat-label>
-                <input matInput placeholder="Box in the left" formControlName="description" required />
+                <mat-label>Cost</mat-label>
+                <input matInput placeholder="$15.00" formControlName="cost" required />
             </mat-form-field>
 
             <mat-form-field>
@@ -21,30 +20,29 @@
                     <mat-option [value]="false">Inactive</mat-option>
                 </mat-select>
             </mat-form-field>
-
             <button type="submit" mat-raised-button color="primary">Create</button>
         </form>
 
 
     </section>
-    <h1 class="text-2xl font-semibold mb-2">Slots:</h1>
+    <h1 class="text-2xl font-semibold mb-2">Fees:</h1>
     <section class="flex flex-wrap gap-5 justify-around">
-        @for (slot of slots; track $index) {
+        @for (fee of fees; track $index) {
             <app-page-item 
-            type-card="slot"
-            [title-card]="slot.number.toString()" 
-            [id-card]="slot.id" 
+            type-card="fee"
+            [title-card]="fee.name" 
+            [id-card]="fee.id" 
             [content-card]="[
               {
-                name: 'Description',
-                value: slot.description
+                name: 'Cost',
+                value: fee.cost
               },
               {
                 name: 'Status',
-                value: slot.status
+                value: fee.status
               }
             ]" 
-            (deleteClicked)="deleteSlot($event)"
+            (deleteClicked)="deleteFee($event)"
             class="w-1/4" />
         }
     </section>
