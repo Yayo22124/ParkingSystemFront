@@ -1,0 +1,28 @@
+<app-header></app-header>
+<main class="flex items-center justify-center mt-10">
+    <div class="flex w-1/4 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+        <div
+            class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r text-2xl" [ngClass]="{'from-blue-500 to-emerald-600 ': read.status, 'from-red-300 to-red-600 ': !read.status}">
+            @if (read.status) {
+                <img src="assets/fan.svg" alt="" class="animate-spin size-full ">
+            } @else {
+                <img src="assets/fan-off.svg" alt="" class="size-full ">
+            }
+        </div>
+        <div class="p-6">
+            <h5
+            class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+            Fan Status
+        </h5>
+        <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
+                @if (read.status) {
+                    Fan Turn On                
+                } @else {
+                    Fan Turn Off
+                }
+                
+            </p>
+        </div>
+     
+    </div>
+</main>

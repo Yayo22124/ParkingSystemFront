@@ -99,6 +99,13 @@ export const routes: Routes = [
           return component.PhotoresistorsComponent;
         },
       },
+      {
+        path:"fan-actuators",
+        async loadComponent() {
+          const component = await import("./pages/fans/fans.component")
+          return component.FANsComponent;
+        },
+      },
     ]
   },
   {

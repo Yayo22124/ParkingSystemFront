@@ -13,12 +13,12 @@
             <mat-icon>group</mat-icon>
             Clients
         </button>
-        
+
         <button class="hidden sm:flex" mat-stroked-button [routerLink]="['/employees']" routerLinkActive="bg-black/70">
             <mat-icon>badge</mat-icon>
             Employees
         </button>
-        
+
         <button class="hidden sm:flex" mat-stroked-button [routerLink]="['/vehicles']" routerLinkActive="bg-black/70">
             <mat-icon>time_to_leave</mat-icon>
             Vehicles
@@ -35,7 +35,7 @@
             <mat-icon>expand_more</mat-icon>
             Sensors
         </button>
-        
+
         <button class="hidden sm:flex" color="accent" mat-flat-button routerLinkActive="bg-black/70">
             <mat-icon>logout</mat-icon>
             Logout
@@ -45,8 +45,7 @@
             <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item [routerLink]="['home']" routerLinkActive="bg-white/20"
-                class="flex items-center justify-around gap-1">
+            <button mat-menu-item [routerLink]="['home']">
                 <mat-icon>home</mat-icon>
                 Inicio
             </button>
@@ -55,15 +54,13 @@
                 <mat-icon>play_arrow</mat-icon>
                 Cartelera
             </button>
-            <button mat-menu-item [routerLink]="['most-popular']" routerLinkActive="bg-white/20"
-                class="flex items-center justify-around gap-1">
+            <button mat-menu-item [routerLink]="['most-popular']">
                 <mat-icon>star</mat-icon>
                 Más Popular
             </button>
         </mat-menu>
         <mat-menu #sensorsMenu="matMenu">
-            <button mat-menu-item [routerLink]="['/sensors/proximity-sensors']" routerLinkActive="bg-white/20"
-                class="flex items-center justify-around gap-1">
+            <button mat-menu-item [routerLink]="['/sensors/proximity-sensors']">
                 <mat-icon>sensors</mat-icon>
                 Proximity Sensor
             </button>
@@ -72,15 +69,20 @@
                 <mat-icon>thermostat</mat-icon>
                 Humidity and Temperature Sensor
             </button>
-            <button mat-menu-item [routerLink]="['/sensors/photoresistors']" routerLinkActive="bg-white/20"
-                class="flex items-center justify-around gap-1">
+            <button mat-menu-item [routerLink]="['/sensors/photoresistors']">
                 <mat-icon>wb_twilight</mat-icon>
                 Photoresistor
             </button>
+            <button mat-menu-item [routerLink]="['/sensors/fan-actuators']">
+                <!-- <mat-icon>f168</mat-icon> -->
+                <span class="material-symbols-outlined">
+                    mode_fan
+                </span>
+                Fan
+            </button>
         </mat-menu>
         <mat-menu #parkingMenu="matMenu">
-            <button mat-menu-item [routerLink]="['/records']" routerLinkActive="bg-white/20"
-                class="flex items-center justify-around gap-1">
+            <button mat-menu-item [routerLink]="['/records']">
                 <mat-icon>receipt</mat-icon>
                 Records
             </button>
@@ -89,8 +91,7 @@
                 <mat-icon>price_change</mat-icon>
                 Fees
             </button>
-            <button mat-menu-item [routerLink]="['/slots']" routerLinkActive="bg-white/20"
-                class="flex items-center justify-around gap-1">
+            <button mat-menu-item [routerLink]="['/slots']">
                 <mat-icon>local_parking</mat-icon>
                 Slots
             </button>
